@@ -1,0 +1,534 @@
+/* Snow Animation */
+@keyframes snowFall {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(920px);
+  }
+}
+
+#snow ellipse,
+#snow path {
+  animation: snowFall linear infinite;
+  animation-duration: calc(var(--snow-duration, 50) * 1s);
+  animation-delay: calc(var(--snow-delay, 0) * -1s);
+}
+
+/* Ski Lift Animation */
+@keyframes skiLiftForward {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(145px, -64px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+#skilift #lift {
+  animation: skiLiftForward 14.5s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+/* Penguin Animations */
+@keyframes penguinSlide {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(35px, 90px);
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0);
+  }
+  70% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+#penguins > g:nth-child(1) {
+  animation: penguinSlide 4.7s ease-in infinite;
+}
+
+#penguins > g:nth-child(2) {
+  animation: penguinSlide 4.7s ease-in infinite;
+  animation-delay: 1s;
+}
+
+#penguins > g:nth-child(3),
+#penguins > g:nth-child(4),
+#penguins > g:nth-child(5) {
+  animation: penguinSlide 4.7s ease-in infinite;
+  animation-delay: calc(var(--penguin-delay, 0) * 1s);
+}
+
+/* Snowman Hat Animation */
+@keyframes hatWave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+}
+
+#hatman #handhat_1_ {
+  animation: hatWave 3s ease-in-out infinite;
+  transform-origin: 70% bottom;
+}
+
+/* Snowman Eyes Blink */
+@keyframes eyesBlink {
+  0%, 95% {
+    transform: scaleY(1);
+  }
+  97.5% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+#hatman #eyesHatMan {
+  animation: eyesBlink 2.2s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+/* Elf Button Colors */
+@keyframes buttonColor {
+  0%, 30% {
+    fill: #EE4250;
+  }
+  60% {
+    fill: #22BC34;
+  }
+  100% {
+    fill: #EE4250;
+  }
+}
+
+#elfman #elfButtons circle:nth-child(1) {
+  animation: buttonColor 1.8s ease-in-out infinite;
+}
+
+#elfman #elfButtons circle:nth-child(2) {
+  animation: buttonColor 1.8s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+#elfman #elfButtons circle:nth-child(3) {
+  animation: buttonColor 1.8s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+/* Elf Bow Animation */
+@keyframes bowPulse {
+  0%, 40% {
+    transform: scaleX(1);
+  }
+  20% {
+    transform: scaleX(1.6);
+  }
+  40% {
+    transform: scaleX(1);
+  }
+}
+
+#elfman #bowElf {
+  animation: bowPulse 1.2s ease-out infinite;
+  animation-delay: 0.4s;
+  transform-origin: center center;
+}
+
+/* Elf Arms */
+@keyframes leftArmWave {
+  0%, 100% {
+    transform: rotate(55deg);
+  }
+  50% {
+    transform: rotate(100deg);
+  }
+}
+
+@keyframes rightArmWave {
+  0%, 100% {
+    transform: rotate(-60deg);
+  }
+  50% {
+    transform: rotate(-110deg);
+  }
+}
+
+#elfman #elfLeftArm {
+  animation: leftArmWave 2s ease-in-out infinite;
+  transform-origin: right top;
+}
+
+#elfman #elfRightArm {
+  animation: rightArmWave 2s ease-in-out infinite;
+  animation-delay: -0.21s;
+  transform-origin: left top;
+}
+
+/* Scarf Animation */
+@keyframes scarfWave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-18deg);
+  }
+}
+
+#scarfman #pieceScarfMan {
+  animation: scarfWave 3s linear infinite;
+}
+
+@keyframes scarfBounce {
+  0%, 20% {
+    transform: scaleY(1) translateY(0);
+  }
+  40% {
+    transform: scaleY(0.92) translateY(0);
+  }
+  60% {
+    transform: scaleY(1.07) translateY(-8px);
+  }
+  100% {
+    transform: scaleY(1) translateY(0);
+  }
+}
+
+#scarfman {
+  animation: scarfBounce 1.2s ease-in infinite;
+  animation-delay: 1s;
+  transform-origin: center bottom;
+}
+
+/* House Smoke */
+@keyframes smokeRise {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(var(--smoke-distance, -11px));
+    opacity: 0;
+  }
+}
+
+#houses #smokes > g:nth-child(5) path {
+  animation: smokeRise 4s linear infinite;
+  animation-delay: calc(var(--smoke-delay, 0) * 0.5s);
+}
+
+#houses #smokes > g:nth-child(4) path {
+  animation: smokeRise 4s linear infinite;
+  animation-delay: calc(var(--smoke-delay, 0) * 0.5s);
+}
+
+#houses #smokes > g:nth-child(3) path {
+  animation: smokeRise 4s linear infinite;
+  animation-delay: calc(var(--smoke-delay, 0) * 0.8s);
+}
+
+#houses #smokes > g:nth-child(2) path {
+  animation: smokeRise 4s linear infinite;
+  animation-delay: calc(var(--smoke-delay, 0) * 1s);
+}
+
+#houses #smokes > g:nth-child(1) path {
+  animation: smokeRise 7s linear infinite;
+  animation-delay: calc(var(--smoke-delay, 0) * 1.3s);
+}
+
+/* Hanging Decorations */
+@keyframes hangingSwing1 {
+  0%, 100% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes hangingSwing2 {
+  0%, 100% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes hangingSwing3 {
+  0%, 100% {
+    transform: rotate(-13deg);
+  }
+  50% {
+    transform: rotate(13deg);
+  }
+}
+
+@keyframes hangingSwing4 {
+  0%, 100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes hangingSwing5 {
+  0%, 100% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+}
+
+#hanging > g:nth-child(1) {
+  animation: hangingSwing1 3s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+#hanging > g:nth-child(2) {
+  animation: hangingSwing2 2s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+#hanging > g:nth-child(3) {
+  animation: hangingSwing3 5s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+#hanging > g:nth-child(4) {
+  animation: hangingSwing4 4s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+#hanging > g:nth-child(5) {
+  animation: hangingSwing5 3s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+/* Scene Initial States - Hidden by default, revealed by animation */
+.scene #houses {
+  transform: scaleY(0);
+  transform-origin: center bottom;
+}
+
+.scene #snowManSnow1,
+.scene #snowManSnow2 {
+  transform: translateY(-600px);
+  opacity: 0;
+}
+
+.scene #scarfman {
+  transform: rotate(90deg) scale(0);
+  transform-origin: center bottom;
+}
+
+.scene #hatman {
+  transform: rotate(-60deg) scale(0);
+  transform-origin: center bottom;
+}
+
+.scene #elfman {
+  transform: rotate(60deg) scale(0);
+  transform-origin: center bottom;
+}
+
+.scene #snowPenguins {
+  transform: translateY(-600px);
+  opacity: 0;
+}
+
+.scene #penguins {
+  transform: scale(0);
+  transform-origin: 10% 50%;
+}
+
+.scene #leftSkiLift,
+.scene #rightSkiLift {
+  transform: translateY(-600px);
+}
+
+.scene #trailSkiLift {
+  transform: scaleX(0);
+  transform-origin: left bottom;
+}
+
+.scene #skilift #lift {
+  opacity: 0;
+}
+
+.scene #hanging > g {
+  opacity: 0;
+}
+
+.scene #letters path {
+  transform: rotate(var(--letter-rotation, 0deg)) scale(0);
+  transform-origin: center top;
+}
+
+/* Animation Started - Reveal elements */
+.scene.animation-started #houses {
+  animation: houseAppear 1s ease-out 0.3s forwards;
+}
+
+@keyframes houseAppear {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.scene.animation-started #snowManSnow1 {
+  animation: snowManAppear1 1s ease-out 0.3s forwards;
+}
+
+.scene.animation-started #snowManSnow2 {
+  animation: snowManAppear2 1s ease-out 0.6s forwards;
+}
+
+@keyframes snowManAppear1 {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes snowManAppear2 {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.scene.animation-started #scarfman {
+  animation: scarfAppear 1s ease-out 1.2s forwards;
+}
+
+@keyframes scarfAppear {
+  to {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.scene.animation-started #hatman {
+  animation: hatAppear 1s ease-out 1.2s forwards;
+}
+
+@keyframes hatAppear {
+  to {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.scene.animation-started #elfman {
+  animation: elfAppear 1s ease-out 1.2s forwards;
+}
+
+@keyframes elfAppear {
+  to {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.scene.animation-started #snowPenguins {
+  animation: penguinsSnowAppear 1s ease-out 1.2s forwards;
+}
+
+@keyframes penguinsSnowAppear {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.scene.animation-started #penguins {
+  animation: penguinsAppear 1s ease-out 1.2s forwards;
+}
+
+@keyframes penguinsAppear {
+  to {
+    transform: scale(1);
+  }
+}
+
+.scene.animation-started #hanging > g {
+  animation: hangingAppear 0.3s ease-out 1.5s forwards;
+}
+
+@keyframes hangingAppear {
+  to {
+    opacity: 1;
+  }
+}
+
+.scene.animation-started #leftSkiLift,
+.scene.animation-started #rightSkiLift {
+  animation: skiLiftAppear 0.7s ease-out 1.5s forwards;
+}
+
+@keyframes skiLiftAppear {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.scene.animation-started #trailSkiLift {
+  animation: trailAppear 0.7s ease-out 1.5s forwards;
+}
+
+@keyframes trailAppear {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.scene.animation-started #skilift #lift {
+  animation: liftAppear 0.3s ease-out 2.2s forwards;
+}
+
+@keyframes liftAppear {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Letters Animation */
+.scene.animation-started #letters path {
+  animation: letterAppear 3s ease-out forwards;
+  animation-delay: calc(var(--letter-index, 0) * 0.1s);
+}
+
+@keyframes letterAppear {
+  to {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* Overlay Hover Effects */
+#overlays > g {
+  transition: opacity 0.3s ease-out;
+  cursor: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/127738/glass-01.png) 20 20, auto;
+}
+
+#overlays > g:hover {
+  opacity: 1 !important;
+}
+

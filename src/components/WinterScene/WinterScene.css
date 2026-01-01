@@ -1,0 +1,29 @@
+.winter-scene-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background: #bfe2dc;
+  overflow: hidden;
+}
+
+.scene {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+/* Smooth viewBox transitions using CSS custom properties */
+.scene {
+  transition: opacity 0.3s ease;
+}
+
+/* Ensure SVG is visible */
+.scene svg,
+.scene {
+  visibility: visible;
+}
+
