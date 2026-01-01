@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import CountdownTimer from '../components/CountdownTimer/CountdownTimer';
 import fireworksVideo from '../assets/video/fireworks.mp4';
 import fireworksAudio from '../assets/audio/Tieng-phao-hoa-no-tren-bau-troi-www_tiengdong_com.mp3';

@@ -26,7 +26,7 @@ const GiftBox = ({ onOpen }: GiftBoxProps) => {
       opacity: 0,
       transition: {
         duration: 1,
-        ease: [0.42, 0, 0.58, 1] // Power2.easeIn equivalent
+        ease: [0.42, 0, 0.58, 1] as [number, number, number, number] // Power2.easeIn equivalent
       }
     }
   };
@@ -37,7 +37,7 @@ const GiftBox = ({ onOpen }: GiftBoxProps) => {
       y: 800,
       transition: {
         duration: 1,
-        ease: [0.42, 0, 0.58, 1] // Power2.easeIn equivalent
+        ease: [0.42, 0, 0.58, 1] as [number, number, number, number] // Power2.easeIn equivalent
       }
     }
   };

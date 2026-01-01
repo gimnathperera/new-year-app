@@ -87,7 +87,7 @@ const WinterScene = () => {
     
     // Initialize snow animation with random delays and durations
     const snowElements = svg.querySelectorAll('#snow ellipse, #snow path');
-    snowElements.forEach((el, i) => {
+    snowElements.forEach((el) => {
       const randomDelay = Math.random() * 100;
       const randomDuration = Math.random() * 50 + 50;
       (el as HTMLElement).style.setProperty('--snow-delay', randomDelay.toString());
@@ -114,12 +114,12 @@ const WinterScene = () => {
     setTimeout(() => {
       const overlays = svg.querySelectorAll('#overlays > g');
       overlays.forEach((overlay) => {
-        overlay.addEventListener('mouseenter', (e) => {
+        overlay.addEventListener('mouseenter', () => {
           if (!isZoomed && animationStarted) {
             (overlay as SVGElement).style.opacity = '1';
           }
         });
-        overlay.addEventListener('mouseleave', (e) => {
+        overlay.addEventListener('mouseleave', () => {
           if (!isZoomed) {
             (overlay as SVGElement).style.opacity = '0';
           }
