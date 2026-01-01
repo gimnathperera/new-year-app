@@ -2,6 +2,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  /* Prevent iOS Safari from zooming on input focus */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Prevent pull-to-refresh on mobile */
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -9,9 +18,17 @@ body {
   overflow: hidden;
   background-color: black;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Prevent iOS bounce effect */
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 #root {
   width: 100%;
   height: 100vh;
+  height: 100dvh; /* Use dynamic viewport height for mobile */
+  overflow: hidden;
+  position: relative;
 }

@@ -78,17 +78,19 @@ const CountdownPage = () => {
           onClick={handleEnableAudio}
           style={{
             position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            padding: '10px 20px',
-            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            bottom: '15px',
+            right: '15px',
+            padding: '12px 18px',
+            backgroundColor: 'rgba(255, 255, 255, 0.95)',
             border: '2px solid #fff',
             borderRadius: '25px',
             cursor: 'pointer',
-            fontSize: '16px',
+            fontSize: '14px',
             fontWeight: 'bold',
             zIndex: 1000,
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+            minHeight: '44px',
+            touchAction: 'manipulation',
           }}
         >
           🔊 Enable Sound

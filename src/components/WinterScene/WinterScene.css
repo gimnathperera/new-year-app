@@ -4,6 +4,7 @@
   position: relative;
   background: #bfe2dc;
   overflow: hidden;
+  touch-action: pan-x pan-y;
 }
 
 .scene {
@@ -14,6 +15,7 @@
   left: 0;
   display: block;
   transition: opacity 0.3s ease;
+  touch-action: pan-x pan-y;
 }
 
 /* Smooth viewBox transitions using CSS custom properties */
@@ -25,5 +27,14 @@
 .scene svg,
 .scene {
   visibility: visible;
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 767px) {
+  .scene {
+    /* Ensure SVG scales properly on mobile */
+    min-width: 100%;
+    min-height: 100%;
+  }
 }
 

@@ -10,6 +10,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .gift.opening {
@@ -18,12 +20,24 @@
 
 .gift-svg {
   width: 100%;
-  height: 100%;
+  height: auto;
   max-width: 500px;
-  max-height: 600px;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .gift.hidden {
   display: none;
+}
+
+/* Mobile landscape and tablets */
+@media (min-width: 768px) {
+  .gift {
+    padding: 40px;
+  }
+
+  .gift-svg {
+    max-height: 600px;
+  }
 }
 
