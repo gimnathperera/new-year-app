@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import CountdownTimer from '../components/CountdownTimer/CountdownTimer';
 import fireworksVideo from '../assets/video/fireworks.mp4';
 import fireworksAudio from '../assets/audio/Tieng-phao-hoa-no-tren-bau-troi-www_tiengdong_com.mp3';
@@ -6,21 +6,57 @@ import './CountdownPage.css';
 
 const CountdownPage = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [audioEnabled, setAudioEnabled] = useState(false);
+  const [userInteracted, setUserInteracted] = useState(false);
 
   useEffect(() => {
-    // Try to play audio on mount (may require user interaction)
-    const playAudio = async () => {
-      if (audioRef.current) {
+    // Enable audio on any user interaction
+    const enableAudio = async () => {
+      if (audioRef.current && !audioEnabled) {
         try {
+          audioRef.current.volume = 0.7; // Set volume to 70%
           await audioRef.current.play();
+          setAudioEnabled(true);
         } catch (error) {
-          // Autoplay was prevented, user will need to interact
-          console.log('Audio autoplay prevented');
+          // Autoplay was prevented
+          console.log('Audio autoplay prevented, waiting for user interaction');
         }
       }
     };
-    playAudio();
-  }, []);
+
+    // Try to play audio on mount
+    enableAudio();
+
+    // Add event listeners for user interaction
+    const handleUserInteraction = async () => {
+      if (!userInteracted) {
+        setUserInteracted(true);
+        await enableAudio();
+      }
+    };
+
+    window.addEventListener('click', handleUserInteraction, { once: true });
+    window.addEventListener('touchstart', handleUserInteraction, { once: true });
+    window.addEventListener('keydown', handleUserInteraction, { once: true });
+
+    return () => {
+      window.removeEventListener('click', handleUserInteraction);
+      window.removeEventListener('touchstart', handleUserInteraction);
+      window.removeEventListener('keydown', handleUserInteraction);
+    };
+  }, [audioEnabled, userInteracted]);
+
+  const handleEnableAudio = async () => {
+    if (audioRef.current) {
+      try {
+        audioRef.current.volume = 0.7;
+        await audioRef.current.play();
+        setAudioEnabled(true);
+      } catch (error) {
+        console.error('Failed to play audio:', error);
+      }
+    }
+  };
 
   return (
     <div className="countdown-page">
@@ -34,9 +70,30 @@ const CountdownPage = () => {
       <audio 
         ref={audioRef}
         src={fireworksAudio} 
-        autoPlay 
         loop
       />
+      {!audioEnabled && (
+        <button 
+          className="audio-enable-btn" 
+          onClick={handleEnableAudio}
+          style={{
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            padding: '10px 20px',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            border: '2px solid #fff',
+            borderRadius: '25px',
+            cursor: 'pointer',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            zIndex: 1000,
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+          }}
+        >
+          🔊 Enable Sound
+        </button>
+      )}
       <div className="countdown-container">
         <CountdownTimer />
       </div>
