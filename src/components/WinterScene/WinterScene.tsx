@@ -17,11 +17,16 @@ const WinterScene = () => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [animationStarted, setAnimationStarted] = useState(false);
   const [svgContent, setSvgContent] = useState<string>('');
+  const [error, setError] = useState<string | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
+    // Get base path from environment for GitHub Pages deployment
+    const basePath = import.meta.env.BASE_URL || '/';
+    const svgPath = `${basePath}winter-scene.svg`;
+    
     // Load SVG content from public folder
-    fetch('/winter-scene.svg')
+    fetch(svgPath)
       .then(res => {
         if (!res.ok) {
           throw new Error(`Failed to fetch SVG: ${res.status}`);
@@ -46,22 +51,8 @@ const WinterScene = () => {
       })
       .catch(err => {
         console.error('Failed to load SVG:', err);
-        // Fallback: try to load from assets
-        fetch('/src/assets/winter-scene.svg')
-          .then(res => res.text())
-          .then(text => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'image/svg+xml');
-            const svgElement = doc.querySelector('svg');
-            if (svgElement) {
-              setSvgContent(svgElement.innerHTML);
-              setTimeout(() => {
-                setAnimationStarted(true);
-                initializeAnimations();
-              }, 200);
-            }
-          })
-          .catch(err2 => console.error('Failed to load SVG from assets:', err2));
+        console.error('Attempted to load from:', svgPath);
+        setError(`Failed to load scene. Path: ${svgPath}`);
       });
   }, []);
 
@@ -191,13 +182,23 @@ const WinterScene = () => {
       ) : (
         <div style={{ 
           display: 'flex', 
+          flexDirection: 'column',
           alignItems: 'center', 
           justifyContent: 'center', 
           height: '100%',
           color: '#1d1f3f',
           fontSize: '18px'
         }}>
-          Loading scene...
+          {error ? (
+            <>
+              <div style={{ marginBottom: '10px' }}>{error}</div>
+              <div style={{ fontSize: '14px', color: '#666' }}>
+                Please refresh the page or check the console for details.
+              </div>
+            </>
+          ) : (
+            'Loading scene...'
+          )}
         </div>
       )}
     </div>
