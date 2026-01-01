@@ -101,6 +101,47 @@ Run ESLint to check for code issues:
 npm run lint
 ```
 
+## 🚀 Deployment to GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+### Setup Instructions
+
+1. **Push your code to GitHub:**
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+   git push -u origin main
+   ```
+
+2. **Enable GitHub Pages:**
+   - Go to your repository on GitHub
+   - Navigate to **Settings** → **Pages**
+   - Under **Source**, select **GitHub Actions**
+   - Save the settings
+
+3. **Deploy automatically:**
+   - The workflow will automatically run on every push to the `main` or `master` branch
+   - You can also manually trigger it from the **Actions** tab → **Deploy to GitHub Pages** → **Run workflow**
+
+4. **Access your site:**
+   - After deployment, your site will be available at:
+   - `https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/`
+   - The deployment URL will be shown in the workflow summary
+
+### Manual Deployment
+
+If you prefer to deploy manually or test the build locally with the correct base path:
+
+```bash
+# Build with the repository name as base path (replace REPO_NAME with your actual repo name)
+BASE_PATH=/REPO_NAME/ npm run build
+
+# The build output will be in the dist/ directory
+```
+
 ## 🎮 Usage
 
 ### Countdown Page (`/`)
